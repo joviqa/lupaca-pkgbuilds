@@ -1,0 +1,28 @@
+# Original Source from: Portergos Linux <portergoslinux@gmail.com>, EndeavourOS <info@endeavouros.com>
+
+pkgname=lupaca-keyring
+pkgver=1
+pkgrel=1
+pkgdesc="Lupaca keyring"
+arch=('any')
+# url="https://github.com/endeavouros-team/PKGBUILDS/raw/master/$pkgname"
+#url="https://raw.githubusercontent.com/endeavouros-team/PKGBUILDS/master/$pkgname"
+license=('GPL3')
+
+install=$pkgname.install
+[ -r $install ] || curl -o $install -s --max-time 30 $url/$install
+
+source=(
+  'lupaca.gpg'
+  '$install'
+)
+
+sha512sums=('bb17b7057cc40c911586f9646fe40dadc055ccfd952ae7362398716fdfff6e8c1cbee3392cb9d7dd018d31ee38efe357c746bdbc5d43b78ef137ff2f5534ec67'
+            'a111ae58b46b708064fbdcac291867cfe2ead1a5c5acb7a17e8831f411078b75f8394d958182cfe64ba3317dba3f0477dbe16057469a90f300d7495c3de6a1ab')
+
+package() {
+    local destdir=usr/share/pacman/keyrings
+
+    install -d $pkgdir/$destdir
+    install -Dm644 lupaca.gpg $pkgdir/$destdir/lupaca.gpg
+}

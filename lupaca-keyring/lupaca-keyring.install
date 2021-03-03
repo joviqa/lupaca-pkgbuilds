@@ -1,0 +1,11 @@
+post_install() {
+	pacman-key --init
+	pacman-key --add /usr/share/pacman/keyrings/lupaca.gpg 
+	pacman-key --lsign-key B8966F6F51F9944DB1C13E24AB8D7ECE0B66188D
+	pacman-key --populate
+}
+
+post_upgrade() {
+        post_install
+}
+# -*- mode: bash;-*-
