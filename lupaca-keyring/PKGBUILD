@@ -10,11 +10,11 @@ arch=('any')
 license=('GPL3')
 
 install=$pkgname.install
-[ -r $install ] || curl -o $install -s --max-time 30 $url/$install
+#[ -r $install ] || curl -o $install -s --max-time 30 $url/$install
 
 source=(
   'lupaca.gpg'
-  '$install'
+  "$install"
 )
 
 sha512sums=('bb17b7057cc40c911586f9646fe40dadc055ccfd952ae7362398716fdfff6e8c1cbee3392cb9d7dd018d31ee38efe357c746bdbc5d43b78ef137ff2f5534ec67'
